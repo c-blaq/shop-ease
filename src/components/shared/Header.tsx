@@ -25,7 +25,7 @@ const PageHeader = () => {
     },
   ];
   return (
-    <Header className="bg-transparent ">
+    <Header className="bg-transparent fixed z-10 left-0 right-0 top-0">
       <div className="flex justify-between items-center gap-5">
         <nav className="flex gap-5 items-center">
           {NAV_ITEMS.map((item: INav) => (

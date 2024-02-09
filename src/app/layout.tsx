@@ -23,7 +23,7 @@ export default function RootLayout({
       <body className={twMerge(inter.className, "#f5f5f5")}>
         <Layout className="min-h-screen">
           <PageHeader />
-          <Content className="px-[50px]">{children}</Content>
+          <Content>{children}</Content>
           <Footer>Footer</Footer>
         </Layout>
       </body>
