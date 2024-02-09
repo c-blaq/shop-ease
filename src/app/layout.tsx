@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Layout } from "antd";
+import { Content, Footer, Header } from "antd/es/layout/layout";
 import "./globals.css";
+import { twMerge } from "tailwind-merge";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -16,7 +19,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={twMerge(inter.className, "#f5f5f5")}>
+        <Layout className="min-h-screen">
+          <Header className="bg-transparent">Header</Header>
+          <Content className="px-[50px]">{children}</Content>
+          <Footer>Footer</Footer>
+        </Layout>
+      </body>
     </html>
   );
 }
