@@ -4,6 +4,7 @@ import { Layout } from "antd";
 import { Content, Footer, Header } from "antd/es/layout/layout";
 import "./globals.css";
 import { twMerge } from "tailwind-merge";
+import PageHeader from "@/components/shared/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +22,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={twMerge(inter.className, "#f5f5f5")}>
         <Layout className="min-h-screen">
-          <Header className="bg-transparent">Header</Header>
+          <PageHeader />
           <Content className="px-[50px]">{children}</Content>
           <Footer>Footer</Footer>
         </Layout>
