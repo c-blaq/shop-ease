@@ -10,7 +10,7 @@ interface INav {
 }
 
 const PageHeader = () => {
-  const NAV_ITEMS = [
+  const NAV_ITEMS: INav[] = [
     {
       title: "Men",
       href: "/",
@@ -28,7 +28,7 @@ const PageHeader = () => {
     <Header className="bg-transparent ">
       <div className="flex justify-between items-center gap-5">
         <nav className="flex gap-5 items-center">
-          {NAV_ITEMS.map((item) => (
+          {NAV_ITEMS.map((item: INav) => (
             <Link
               key={item.title}
               href={item.href}
