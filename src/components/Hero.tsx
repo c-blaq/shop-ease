@@ -24,7 +24,7 @@ const Hero = () => {
 
   return (
     <div className="h-screen bg-gray-300 [&_.ant-carousel]:!h-full">
-      <Carousel autoplay className="h-full w-full">
+      <Carousel autoplay effect="fade" className="h-full w-full">
         {CAROUSEL_IMAGES.map(({ imageName, imageSrc }) => (
           <div key={imageName} className="h-screen w-full">
             <Image
