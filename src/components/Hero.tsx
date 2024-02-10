@@ -4,14 +4,6 @@ import React from "react";
 
 const Hero = () => {
   const CAROUSEL_IMAGES = [
-    // {
-    //   imageSrc: "/girlFashionModel.jpg",
-    //   imageName: "Girl Model",
-    // },
-    {
-      imageSrc: "/clothShopping.avif",
-      imageName: "cloth Shopping",
-    },
     {
       imageSrc: "/peopleFashionModel.webp",
       imageName: "People Model",
@@ -20,14 +12,30 @@ const Hero = () => {
       imageSrc: "/shoppingBag.avif",
       imageName: "Shopping Bag",
     },
+    {
+      imageSrc: "/cloth.png",
+      imageName: "cloth Shopping",
+    },
+    {
+      imageSrc: "/clothes.jpg",
+      imageName: "People Model",
+    },
   ];
 
   return (
-    <div className="h-screen pt-40 text-center bg-gray-300 [&_.ant-carousel]:!h-full">
+    <div className="h-screen bg-gray-300 [&_.ant-carousel]:!h-full">
       <Carousel autoplay className="h-full w-full">
         {CAROUSEL_IMAGES.map(({ imageName, imageSrc }) => (
-          <div key={imageName} className="">
-            <span> {imageName}</span>
+          <div key={imageName} className="h-screen w-full">
+            <Image
+              src={imageSrc}
+              alt={imageName}
+              width={1400}
+              height={1400}
+              priority
+              fetchPriority="high"
+              className="object-cover origin-center  w-full h-full"
+            />
           </div>
         ))}
       </Carousel>
