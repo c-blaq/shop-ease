@@ -39,7 +39,7 @@ const PageHeader = () => {
           ))}
         </nav>
 
-        <h1 className="text-xl font-semibold transition duration-300">
+        <h1 className="text-lg sm:text-xl font-semibold transition duration-300">
           <Link href="/" className="hover:!text-gray-500">
             ShopEase
           </Link>
