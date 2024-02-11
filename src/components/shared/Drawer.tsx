@@ -10,97 +10,78 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from "@/components/ui/drawer";
+import { CgMenuRightAlt } from "react-icons/cg";
+import { FaTimes } from "react-icons/fa";
+import Link from "next/link";
+import { IoBagOutline } from "react-icons/io5";
+import { Button } from "antd";
 
-const data = [
-  {
-    goal: 400,
-  },
-  {
-    goal: 300,
-  },
-  {
-    goal: 200,
-  },
-  {
-    goal: 300,
-  },
-  {
-    goal: 200,
-  },
-  {
-    goal: 278,
-  },
-  {
-    goal: 189,
-  },
-  {
-    goal: 239,
-  },
-  {
-    goal: 300,
-  },
-  {
-    goal: 200,
-  },
-  {
-    goal: 278,
-  },
-  {
-    goal: 189,
-  },
-  {
-    goal: 349,
-  },
-];
-
-export function DrawerDemo() {
-  const [goal, setGoal] = React.useState(350);
-
-  function onClick(adjustment: number) {
-    setGoal(Math.max(200, Math.min(400, goal + adjustment)));
-  }
+export function NavDrawer() {
+  const NAV_ITEMS = [
+    {
+      title: "Men",
+      href: "/",
+    },
+    {
+      title: "Women",
+      href: "/",
+    },
+    {
+      title: "Bags",
+      href: "/",
+    },
+  ];
 
   return (
-    <Drawer>
+    <Drawer direction="right">
       <DrawerTrigger asChild>
-        <button>Open Drawer</button>
+        <button className="text-2xl">
+          <CgMenuRightAlt />
+        </button>
       </DrawerTrigger>
-      <DrawerContent>
-        <div className="mx-auto w-full max-w-sm">
+      <DrawerContent className="top-0 right-0 ml-auto mt-0 w-1/2">
+        <div className="mx-auto w-full">
           <DrawerHeader>
-            <DrawerTitle>Move Goal</DrawerTitle>
-            <DrawerDescription>Set your daily activity goal.</DrawerDescription>
+            <DrawerTitle className="flex justify-between">
+              <h1>ShopEase</h1>
+              <DrawerClose asChild>
+                <button>
+                  <FaTimes />
+                </button>
+              </DrawerClose>
+            </DrawerTitle>
+            {/* <DrawerDescription>Set your daily activity goal.</DrawerDescription> */}
           </DrawerHeader>
+
           <div className="p-4 pb-0">
-            <div className="flex items-center justify-center space-x-2">
-              <button
-                className="h-8 w-8 shrink-0 rounded-full"
-                onClick={() => onClick(-10)}
-                disabled={goal <= 200}
-              ></button>
-              <div className="flex-1 text-center">
-                <div className="text-7xl font-bold tracking-tighter">
-                  {goal}
-                </div>
-                <div className="text-[0.70rem] uppercase text-muted-foreground">
-                  Calories/day
-                </div>
-              </div>
-              <button
-                className="h-8 w-8 shrink-0 rounded-full"
-                onClick={() => onClick(10)}
-                disabled={goal >= 400}
+            <nav className="flex flex-col gap-6">
+              {NAV_ITEMS.map((item) => (
+                <Link
+                  key={item.title}
+                  href={item.href}
+                  className="hover:text-gray-500 hover:p-2 hover:bg-black/[0.06] transition duration-300"
+                >
+                  {item.title}
+                </Link>
+              ))}
+            </nav>
+
+            <div className="flex flex-col gap-6 mt-6">
+              <Link
+                href="/"
+                className="flex items-center gap-2 hover:p-2 hover:bg-black/[0.06]"
               >
-                <span className="sr-only">Increase</span>
-              </button>
+                <IoBagOutline
+                  size={"24px"}
+                  className="hover:!text-gray-500  transition duration-300"
+                />
+                <span>Cart</span>
+              </Link>
+              <Button type="text" className="bg-black/80 text-white">
+                Login
+              </Button>
             </div>
           </div>
-          <DrawerFooter>
-            <button>Submit</button>
-            <DrawerClose asChild>
-              <button>Cancel</button>
-            </DrawerClose>
-          </DrawerFooter>
         </div>
       </DrawerContent>
     </Drawer>
