@@ -39,7 +39,7 @@ export function NavDrawer() {
           <CgMenuRightAlt />
         </button>
       </DrawerTrigger>
-      <DrawerContent className="top-0 right-0 ml-auto mt-0 w-1/2">
+      <DrawerContent className="top-0 right-0 ml-auto mt-0 w-2/3">
         <div className="mx-auto w-full">
           <DrawerHeader>
             <DrawerTitle className="flex justify-between">
