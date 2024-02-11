@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Layout } from "antd";
-import { Content, Footer, Header } from "antd/es/layout/layout";
+import { Content } from "antd/es/layout/layout";
 import "./globals.css";
 import { twMerge } from "tailwind-merge";
 import PageHeader from "@/components/shared/Header";
+import PageFooter from "@/components/shared/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,7 +25,7 @@ export default function RootLayout({
         <Layout className="min-h-screen">
           <PageHeader />
           <Content>{children}</Content>
-          <Footer>Footer</Footer>
+          <PageFooter />
         </Layout>
       </body>
     </html>
