@@ -23,19 +23,11 @@ const ProductCard = () => {
           <FaHeart className="text-white text-xl hover:text-stone-500 absolute top-5 right-5" />
         </div>
       }
-      className="rounded-none bg-transparent [&_.ant-card-cover]:!bg-gray-200 [&_.ant-card-cover]:!rounded-bl-3xl !rounded-tr-3xl overflow-clip"
+      className="rounded-none bg-transparent [&_.ant-card-body]:px-3 [&_.ant-card-cover]:!bg-gray-200 [&_.ant-card-cover]:!rounded-bl-3xl !rounded-tr-3xl overflow-clip"
     >
-      <Meta
-        title="Europe Street beat"
-        description={
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque,
-            similique.
-          </p>
-        }
-      />
+      <Meta title="Europe Street beat" description={<p>$100.00</p>} />
       <Button
-        className="ml-auto block w-fit mt-5 bg-black/80 text-white transition duration-300"
+        className="ml-auto block text-sm w-fit mt-5 bg-black/80 text-white transition duration-300"
         type="text"
       >
         Add to cart
