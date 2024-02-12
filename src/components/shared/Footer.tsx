@@ -12,15 +12,15 @@ const PageFooter = () => {
   const NAV_ITEMS: INav[] = [
     {
       title: "Men",
-      href: "/",
+      href: "/category/men",
     },
     {
       title: "Women",
-      href: "/",
+      href: "/category/women",
     },
     {
       title: "Bags",
-      href: "/",
+      href: "/category/bags",
     },
   ];
 

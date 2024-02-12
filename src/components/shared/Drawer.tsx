@@ -20,20 +20,22 @@ export function NavDrawer() {
   const NAV_ITEMS = [
     {
       title: "Men",
-      href: "/",
+      href: "/category/men",
     },
     {
       title: "Women",
-      href: "/",
+      href: "/category/women",
     },
     {
       title: "Bags",
-      href: "/",
+      href: "/category/bags",
     },
   ];
 
+  const [open, setOpen] = React.useState<boolean>(false);
+
   return (
-    <Drawer direction="right">
+    <Drawer direction="right" open={open} onOpenChange={setOpen}>
       <DrawerTrigger asChild>
         <button className="text-2xl">
           <CgMenuRightAlt />
@@ -59,6 +61,7 @@ export function NavDrawer() {
                 <Link
                   key={item.title}
                   href={item.href}
+                  onClick={() => setOpen(false)}
                   className="hover:text-gray-500 hover:p-2 hover:bg-black/[0.06] transition duration-300"
                 >
                   {item.title}
