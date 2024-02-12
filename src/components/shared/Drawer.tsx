@@ -15,6 +15,7 @@ import { FaTimes } from "react-icons/fa";
 import Link from "next/link";
 import { IoBagOutline } from "react-icons/io5";
 import { Button } from "antd";
+import CartBadge from "./CartBadge";
 
 export function NavDrawer() {
   const NAV_ITEMS = [
@@ -74,10 +75,7 @@ export function NavDrawer() {
                 href="/"
                 className="flex items-center gap-2 hover:p-2 hover:bg-black/[0.06]"
               >
-                <IoBagOutline
-                  size={"24px"}
-                  className="hover:!text-gray-500  transition duration-300"
-                />
+                <CartBadge />
                 <span>Cart</span>
               </Link>
               <Button type="text" className="bg-black/80 text-white">
