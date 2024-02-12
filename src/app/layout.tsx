@@ -6,6 +6,7 @@ import "./globals.css";
 import { twMerge } from "tailwind-merge";
 import PageHeader from "@/components/shared/Header";
 import PageFooter from "@/components/shared/Footer";
+import CartProvider from "@/context/CartProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,11 +23,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={twMerge(inter.className, "#f5f5f5")}>
-        <Layout className="min-h-screen">
-          <PageHeader />
-          <Content>{children}</Content>
-          <PageFooter />
-        </Layout>
+        <CartProvider>
+          <Layout className="min-h-screen">
+            <PageHeader />
+            <Content>{children}</Content>
+            <PageFooter />
+          </Layout>
+        </CartProvider>
       </body>
     </html>
   );
