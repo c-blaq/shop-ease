@@ -4,26 +4,30 @@ import React from "react";
 
 const Product = () => {
   return (
-    <div className="py-24 px-5 h-screen flex justify-between gap-5 items-center max-w-screen-2xl  mx-auto">
-      <div className="flex items-center flex-col gap-5 w-1/4">
-        <Image
-          src="/jacket.webp"
-          alt="Jacket"
-          width={150}
-          height={150}
-          className="object-cover object-top"
-        />
+    <div className="py-24 px-5 min-h-screen flex flex-col lg:flex-row justify-between gap-5 items-center max-w-screen-2xl  mx-auto">
+      <div className="flex items-center lg:flex-col gap-5 lg:w-1/4">
+        <div>
+          <Image
+            src="/jacket.webp"
+            alt="Jacket"
+            width={150}
+            height={150}
+            className="object-cover w-full max-w-32 sm:w-auto object-top"
+          />
+        </div>
 
-        <Image
-          src="/jacket.webp"
-          alt="Jacket"
-          width={150}
-          height={150}
-          className="object-cover object-top"
-        />
+        <div>
+          <Image
+            src="/jacket.webp"
+            alt="Jacket"
+            width={150}
+            height={150}
+            className="object-cover w-full max-w-32 sm:w-auto object-top"
+          />
+        </div>
       </div>
 
-      <div className="h-full bg-gray-200 flex-1">
+      <div className="h-full bg-gray-200 flex-1 -order-1 lg:order-[0]">
         <Image
           src="/jacket.webp"
           alt="Jacket"
@@ -33,7 +37,7 @@ const Product = () => {
         />
       </div>
 
-      <div className="max-w-md w-1/4">
+      <div className="max-w-md lg:w-1/4 mt-5 lg:mt-0">
         <div className="flex justify-between items-center">
           <h2 className="text-xl font-semibold">Knitted Jacket</h2>
           <span className="text-black/50">$500.00</span>
