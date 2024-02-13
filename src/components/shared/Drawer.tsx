@@ -72,7 +72,7 @@ export function NavDrawer() {
 
             <div className="flex flex-col gap-6 mt-6">
               <Link
-                href="/"
+                href="/cart"
                 className="flex items-center gap-2 hover:p-2 hover:bg-black/[0.06]"
               >
                 <CartBadge />
