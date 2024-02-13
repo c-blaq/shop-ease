@@ -21,16 +21,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={twMerge(inter.className, "#f5f5f5")}>
-        <CartProvider>
+    <CartProvider>
+      <html lang="en">
+        <body className={twMerge(inter.className, "#f5f5f5")}>
           <Layout className="min-h-screen">
             <PageHeader />
             <Content>{children}</Content>
             <PageFooter />
           </Layout>
-        </CartProvider>
-      </body>
-    </html>
+        </body>
+      </html>
+    </CartProvider>
   );
 }
