@@ -78,9 +78,12 @@ export function NavDrawer() {
                 <CartBadge />
                 <span>Cart</span>
               </Link>
-              <Button type="text" className="bg-black/80 text-white">
+              <Link
+                href="/auth/login"
+                className="bg-black/80 text-white hover:bg-black/[0.06] hover:text-black p-3 rounded-sm text-center"
+              >
                 Login
-              </Button>
+              </Link>
             </div>
           </div>
         </div>

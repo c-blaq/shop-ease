@@ -52,10 +52,13 @@ const PageHeader = () => {
         </h1>
 
         <div className="hidden xs:flex items-center gap-5">
-          <Link href="/cart">
+          <Link className="flex items-center justify-center" href="/cart">
             <CartBadge />
           </Link>
-          <Button type="text">Login</Button>
+
+          <Link href="/auth/login" className="flex justify-center items-center">
+            <Button type="text">Login</Button>
+          </Link>
         </div>
 
         <div className="flex xs:hidden gap-4">
