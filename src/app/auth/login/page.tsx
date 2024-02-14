@@ -21,7 +21,7 @@ const Login = () => {
       <div className="text-center mt-3">
         <p>
           Not a member?{" "}
-          <Link href="/auth.register" className="text-gray-600">
+          <Link href="/auth/register" className="text-gray-600">
             register
           </Link>
         </p>
