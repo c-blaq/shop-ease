@@ -1,5 +1,4 @@
 "use client";
-
 import React, { ReactNode, createContext, useContext, useState } from "react";
 
 type CartContextType = {
@@ -13,11 +12,7 @@ export const CartContext = createContext<CartContextType>(
   {} as CartContextType
 );
 
-const CartProvider = ({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) => {
+const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cartItemsCount, setCartItemsCount] = useState(0);
   const [cartItems, setCartItems] = useState([]);
 
@@ -40,6 +35,6 @@ const CartProvider = ({
   );
 };
 
-export const useCart = () => useContext(CartContext);
+export const useCart = () => useContext<CartContextType>(CartContext);
 
 export default CartProvider;

@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { Button, Card } from "antd";
 import Meta from "antd/es/card/Meta";
