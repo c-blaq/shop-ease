@@ -11,7 +11,7 @@ const Register = () => {
         <FormInput type="text" placeholder="First Name" errorMessage="" />
         <FormInput type="text" placeholder="Last Name" errorMessage="" />
         <FormInput type="email" placeholder="Email" errorMessage="" />
-        <FormInput type="password" placeholder="Email" errorMessage="" />
+        <FormInput type="password" placeholder="Password" errorMessage="" />
 
         <Button type="text" className="w-full bg-black/80 text-white mt-2">
           Register

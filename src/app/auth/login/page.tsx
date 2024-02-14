@@ -9,7 +9,7 @@ const Login = () => {
       <h2 className="mb-5 text-lg text-center font-semibold">Login</h2>
       <form className="w-full">
         <FormInput type="email" placeholder="Email" errorMessage="" />
-        <FormInput type="password" placeholder="Email" errorMessage="" />
+        <FormInput type="password" placeholder="Password" errorMessage="" />
         <Link href="/" className="text-sm ml-auto block -mt-2 w-fit">
           Forgot Password?
         </Link>
