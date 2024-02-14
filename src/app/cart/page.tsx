@@ -150,7 +150,7 @@ const Cart = () => {
               Clear
             </Button>
             <Link
-              href="/"
+              href="/checkout"
               className="flex flex-1 justify-center items-center px-5 bg-black/95 rounded-sm hover:bg-black/[0.06] hover:text-black text-white"
             >
               Checkout
