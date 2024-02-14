@@ -7,7 +7,7 @@ import { FaChevronLeft, FaDeleteLeft, FaTrash } from "react-icons/fa6";
 
 const Cart = () => {
   return (
-    <div className="py-24 md:py-32 max-w-screen-2xl mx-auto px-5">
+    <div className="py-24 md:py-32 max-w-4xl mx-auto px-5">
       <div>
         <h2 className="text-lg sm:text-2xl mb-3">Cart</h2>
         <Link
@@ -19,7 +19,7 @@ const Cart = () => {
         </Link>
       </div>
 
-      <div className=" max-w-4xl mt-10">
+      <div className="w-full mt-10">
         <table className="w-full">
           <thead className="border-t-2 border-b-2">
             <tr>
