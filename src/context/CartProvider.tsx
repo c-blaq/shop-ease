@@ -9,9 +9,15 @@ type CartContextType = {
   handleAddItemToCart: () => void;
 };
 
-export const CartContext = createContext<CartContextType | null>(null);
+export const CartContext = createContext<CartContextType>(
+  {} as CartContextType
+);
 
-const CartProvider = ({ children }: { children: ReactNode }) => {
+const CartProvider = ({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) => {
   const [cartItemsCount, setCartItemsCount] = useState(0);
   const [cartItems, setCartItems] = useState([]);
 
@@ -23,7 +29,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
   return (
     <CartContext.Provider
       value={{
-        cartItemsCount,
+        cartItemsCount: cartItemsCount,
         setCartItemsCount,
         cartItems,
         handleAddItemToCart,
@@ -34,7 +40,6 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-export const useCartContext = () =>
-  useContext<CartContextType | null>(CartContext);
+export const useCart = () => useContext(CartContext);
 
 export default CartProvider;

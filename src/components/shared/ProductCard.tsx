@@ -1,15 +1,13 @@
-"use client";
-
 import React from "react";
 import { Button, Card } from "antd";
 import Meta from "antd/es/card/Meta";
 import Image from "next/image";
 import { FaHeart } from "react-icons/fa6";
 import Link from "next/link";
-import { useCartContext } from "@/context/CartProvider";
+import { useCart } from "@/context/CartProvider";
 
 const ProductCard = () => {
-  const { handleAddItemToCart } = useCartContext();
+  const { handleAddItemToCart } = useCart();
 
   return (
     <Card
