@@ -4,7 +4,34 @@ import ProductCard from "@/components/shared/ProductCard";
 import { Carousel } from "antd";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
 
+interface ITestimonials {
+  id: number;
+  desc: string;
+  author: string;
+  title: string;
+}
+
 export default function Home() {
+  const TESTIMONIALS: ITestimonials[] = [
+    {
+      id: 1,
+      desc: "Blanditiis, ducimus? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis, ducimus?",
+      author: "IFaz",
+      title: "Brand Designer",
+    },
+    {
+      id: 2,
+      desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis, ducimus?",
+      author: "Temitee",
+      title: "Product Designer",
+    },
+    {
+      id: 3,
+      desc: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Blanditiis, ducimus? Lorem ipsum dolor sit amet consectetur,?",
+      author: "Miqdad",
+      title: "Fitness Instructor",
+    },
+  ];
   return (
     <>
       <Hero />
@@ -26,23 +53,19 @@ export default function Home() {
 
         <Carousel
           arrows={true}
+          dots={false}
           prevArrow={<FaArrowLeftLong />}
           nextArrow={<FaArrowRightLong />}
           autoplay
-          className="bg-white min-h-[200px] gap-6 max-w-lg mx-auto [&_.slick-next]:hover:text-gray-500 [&_.slick-arrow]:-mx-5 [&_.slick-arrow]:text-black [&_.slick-prev]:hover:text-gray-500"
+          className="flex items-center justify-center gap-6 max-w-lg mx-auto [&_.slick-next]:hover:text-gray-500 [&_.slick-arrow]:-mx-5 [&_.slick-arrow]:text-black [&_.slick-prev]:hover:text-gray-500"
         >
-          <div>
-            <h3>1</h3>
-          </div>
-          <div>
-            <h3>2</h3>
-          </div>
-          <div>
-            <h3>3</h3>
-          </div>
-          <div>
-            <h3>4</h3>
-          </div>
+          {TESTIMONIALS.map((item) => (
+            <div className="text-center" key={item.id}>
+              <p>{item.desc}</p>
+              <h3 className="font-semibold mt-4 text-base">{item.author}</h3>
+              <span className="text-gray-500 text-sm">({item.title})</span>
+            </div>
+          ))}
         </Carousel>
       </div>
     </>
