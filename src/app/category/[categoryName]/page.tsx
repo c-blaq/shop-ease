@@ -1,7 +1,12 @@
 import ProductCard from "@/components/shared/ProductCard";
+import { commerce } from "@/lib/commerce";
 import React from "react";
 
-const Category = ({ params }: { params: { categoryName: string } }) => {
+const Category = async ({ params }: { params: { categoryName: string } }) => {
+  const category = await commerce.categories.retrieve(params.categoryName, {
+    type: "slug",
+  });
+
   return (
     <div className="pt-32 pb-24 max-w-screen-2xl mx-auto px-5">
       <div className="flex flex-col md:flex-row gap-8 relative">
@@ -10,21 +15,11 @@ const Category = ({ params }: { params: { categoryName: string } }) => {
             {params.categoryName}
           </h2>
           <div className="flex md:text-base flex-row md:flex-col">
-            <span className="cursor-pointer hover:bg-black/[0.06] transition duration-300 py-3 px-4 md:px-0 md:hover:px-3">
-              All
-            </span>
-            <span className="cursor-pointer hover:bg-black/[0.06] transition duration-300 py-3 px-4 md:px-0 md:hover:px-3">
-              Shirts
-            </span>
-            <span className="cursor-pointer hover:bg-black/[0.06] transition duration-300 py-3 px-4 md:px-0 md:hover:px-3">
-              Jeans
-            </span>
-            <span className="cursor-pointer hover:bg-black/[0.06] transition duration-300 py-3 px-4 md:px-0 md:hover:px-3">
-              Pants
-            </span>
-            <span className="cursor-pointer hover:bg-black/[0.06] transition duration-300 py-3 px-4 md:px-0 md:hover:px-3">
-              jacket
-            </span>
+            {category?.children.map((subcategory) => (
+              <span className="cursor-pointer hover:bg-black/[0.06] transition duration-300 py-3 px-4 md:px-0 md:hover:px-3">
+                {subcategory.name}
+              </span>
+            ))}
           </div>
         </div>
 

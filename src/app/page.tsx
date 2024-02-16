@@ -32,6 +32,8 @@ export default function Home() {
       title: "Fitness Instructor",
     },
   ];
+  console.log("mounted");
+
   return (
     <>
       <Hero />
@@ -57,7 +59,7 @@ export default function Home() {
           prevArrow={<FaArrowLeftLong />}
           nextArrow={<FaArrowRightLong />}
           autoplay
-          className="flex items-center justify-center gap-6 max-w-lg mx-auto [&_.slick-next]:hover:text-gray-500 [&_.slick-arrow]:-mx-5 [&_.slick-arrow]:text-black [&_.slick-prev]:hover:text-gray-500"
+          className="flex w-5/6 items-center justify-center gap-6 max-w-lg mx-auto [&_.slick-next]:hover:text-gray-500 [&_.slick-arrow]:text-black [&_.slick-prev]:hover:text-gray-500"
         >
           {TESTIMONIALS.map((item) => (
             <div className="text-center" key={item.id}>
