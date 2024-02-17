@@ -20,7 +20,7 @@ const ProductCard = ({ product }: IProduct) => {
     <Card
       hoverable
       cover={
-        <Link href="/product/1">
+        <Link href={`/product/${product.permalink}`}>
           <div className="relative">
             <Image
               src={product.image?.url}
