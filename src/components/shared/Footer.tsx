@@ -19,8 +19,8 @@ const PageFooter = () => {
       href: "/category/women",
     },
     {
-      title: "Bags",
-      href: "/category/bags",
+      title: "Accessory",
+      href: "/category/accessory",
     },
   ];
 

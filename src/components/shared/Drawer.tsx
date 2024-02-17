@@ -28,8 +28,8 @@ export function NavDrawer() {
       href: "/category/women",
     },
     {
-      title: "Bags",
-      href: "/category/bags",
+      title: "Accessory",
+      href: "/category/accessory",
     },
   ];
 
