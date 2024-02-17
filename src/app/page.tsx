@@ -3,6 +3,7 @@ import AboutUS from "@/components/home/AboutUS";
 import ProductCard from "@/components/shared/ProductCard";
 import { Carousel } from "antd";
 import { FaArrowLeftLong, FaArrowRightLong } from "react-icons/fa6";
+import { commerce } from "@/lib/commerce";
 
 interface ITestimonials {
   id: number;
@@ -11,7 +12,7 @@ interface ITestimonials {
   title: string;
 }
 
-export default function Home() {
+export default async function Home() {
   const TESTIMONIALS: ITestimonials[] = [
     {
       id: 1,
@@ -32,7 +33,11 @@ export default function Home() {
       title: "Fitness Instructor",
     },
   ];
-  console.log("mounted");
+
+  const products = await commerce.products.list({
+    category_slug: ["featured"],
+    limit: 4,
+  });
 
   return (
     <>
@@ -46,10 +51,8 @@ export default function Home() {
             Featured Products
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
-            <ProductCard />
+            {products &&
+              products.data.map((product) => <ProductCard product={product} />)}
           </div>
         </section>
 
