@@ -4,7 +4,7 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "os.alipayobjects.com",
+        hostname: "cdn.chec.io",
         port: "",
         // pathname: "/account123/**",
       },
