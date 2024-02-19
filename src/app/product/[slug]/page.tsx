@@ -35,7 +35,7 @@ const Product = async ({ params }: { params: { slug: string } }) => {
         <>
           <div className="h-full bg-gray-200 flex-1 -order-1 lg:order-[0]">
             <Image
-              src={product.image.url || "/jacket.webp"}
+              src={product.image?.url}
               alt="Jacket"
               width={1400}
               height={500}
