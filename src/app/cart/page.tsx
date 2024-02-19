@@ -1,11 +1,19 @@
+"use client";
+
+import { useCart } from "@/context/CartProvider";
+import { LineItem } from "chec__commerce.js/types/line-item";
 import { Button } from "antd";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import { FaMinus } from "react-icons/fa";
 import { FaChevronLeft, FaDeleteLeft, FaTrash } from "react-icons/fa6";
 
 const Cart = () => {
+  const { cartItems, fetchCart } = useCart();
+
+  useEffect(() => fetchCart, []);
+
   return (
     <div className="py-24 md:py-32 max-w-4xl mx-auto px-5">
       <div>
@@ -31,117 +39,58 @@ const Cart = () => {
           </thead>
 
           <tbody className="text-center">
-            <tr className="border-b-2">
-              <td className="py-2 px-2 sm:px-0">
-                <div className="flex flex-col sm:flex-row justify-center items-center gap-2">
-                  <Image
-                    src="/jacket.webp"
-                    alt="jacket"
-                    width={50}
-                    height={50}
-                  />
-                  <div>
-                    <h3>Jacket</h3>
-                  </div>
-                </div>
-              </td>
-              <td className="py-2 px-2 sm:px-0 hidden sm:block">$200</td>
-              <td className="py-2 px-2 sm:px-0">
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-1">
-                  <Button type="text">-</Button>
-                  <span>1</span>
-                  <Button type="text">+</Button>
-                </div>
-              </td>
-              <td className="py-2 px-2 sm:px-0">
-                $200{" "}
-                <span className="block text-gray-400 sm:hidden">($200)</span>
-              </td>
-              <td className="py-2 px-2 sm:px-0 w-5">
-                <Button
-                  type="text"
-                  className="text-black/75 hover:!text-red-500"
-                >
-                  <FaTrash />
-                </Button>
-              </td>
-            </tr>
-
-            <tr className="border-b-2">
-              <td className="py-2 px-2 sm:px-0">
-                <div className="flex flex-col sm:flex-row justify-center items-center gap-2">
-                  <Image
-                    src="/jacket.webp"
-                    alt="jacket"
-                    width={50}
-                    height={50}
-                  />
-                  <div>
-                    <h3>Jacket</h3>
-                  </div>
-                </div>
-              </td>
-              <td className="py-2 px-2 sm:px-0 hidden sm:block">$200</td>
-              <td className="py-2 px-2 sm:px-0">
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-1">
-                  <Button type="text">-</Button>
-                  <span>1</span>
-                  <Button type="text">+</Button>
-                </div>
-              </td>
-              <td className="py-2 px-2 sm:px-0">
-                $200{" "}
-                <span className="block text-gray-400 sm:hidden">($200)</span>
-              </td>
-              <td className="py-2 px-2 sm:px-0 w-5">
-                <Button
-                  type="text"
-                  className="text-black/75 hover:!text-red-500"
-                >
-                  <FaTrash />
-                </Button>
-              </td>
-            </tr>
-            <tr className="border-b-2">
-              <td className="py-2 px-2 sm:px-0">
-                <div className="flex flex-col sm:flex-row justify-center items-center gap-2">
-                  <Image
-                    src="/jacket.webp"
-                    alt="jacket"
-                    width={50}
-                    height={50}
-                  />
-                  <div>
-                    <h3>Jacket</h3>
-                  </div>
-                </div>
-              </td>
-              <td className="py-2 px-2 sm:px-0 hidden sm:block">$200</td>
-              <td className="py-2 px-2 sm:px-0">
-                <div className="flex flex-col sm:flex-row items-center justify-center gap-1">
-                  <Button type="text">-</Button>
-                  <span>1</span>
-                  <Button type="text">+</Button>
-                </div>
-              </td>
-              <td className="py-2 px-2 sm:px-0">
-                $200{" "}
-                <span className="block text-gray-400 sm:hidden">($200)</span>
-              </td>
-              <td className="py-2 px-2 sm:px-0 w-5">
-                <Button
-                  type="text"
-                  className="text-black/75 hover:!text-red-500"
-                >
-                  <FaTrash />
-                </Button>
-              </td>
-            </tr>
+            {cartItems ? (
+              cartItems.line_items?.map((item: LineItem) => (
+                <tr className="border-b-2">
+                  <td className="py-2 px-2 sm:px-0">
+                    <div className="flex flex-col sm:flex-row justify-center items-center gap-2">
+                      <Image
+                        src={item.image?.url}
+                        alt="jacket"
+                        width={50}
+                        height={50}
+                      />
+                      <div>
+                        <h3>Jacket</h3>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="py-2 px-2 sm:px-0 hidden sm:block">
+                    {item.price.formatted_with_symbol}
+                  </td>
+                  <td className="py-2 px-2 sm:px-0">
+                    <div className="flex flex-col sm:flex-row items-center justify-center gap-1">
+                      <Button type="text">-</Button>
+                      <span>{item.quantity}</span>
+                      <Button type="text">+</Button>
+                    </div>
+                  </td>
+                  <td className="py-2 px-2 sm:px-0">
+                    {item.line_total.formatted_with_symbol}{" "}
+                    <span className="block text-gray-400 sm:hidden">
+                      ({item.price.formatted_with_symbol})
+                    </span>
+                  </td>
+                  <td className="py-2 px-2 sm:px-0 w-5">
+                    <Button
+                      type="text"
+                      className="text-black/75 hover:!text-red-500"
+                    >
+                      <FaTrash />
+                    </Button>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <p>No item</p>
+            )}
           </tbody>
         </table>
 
         <div className="mt-5  items-center justify-between">
-          <h2 className="text-xl">Subtotal: $600.00</h2>
+          <h2 className="text-xl">
+            Subtotal: {cartItems.subtotal.formatted_with_symbol}
+          </h2>
           <div className="flex mt-5 gap-5">
             <Button
               type="text"

@@ -51,10 +51,13 @@ export default async function Home() {
             Featured Products
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
-            {products &&
+            {products ? (
               products.data.map((product) => (
                 <ProductCard key={product.id} product={product} />
-              ))}
+              ))
+            ) : (
+              <p>There are no products available!</p>
+            )}
           </div>
         </section>
 
