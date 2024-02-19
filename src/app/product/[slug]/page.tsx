@@ -35,7 +35,7 @@ const Product = async ({ params }: { params: { slug: string } }) => {
         <>
           <div className="h-full bg-gray-200 flex-1 -order-1 lg:order-[0]">
             <Image
-              src={product.image.url}
+              src={product?.image.url}
               alt="Jacket"
               width={1400}
               height={500}
@@ -45,14 +45,14 @@ const Product = async ({ params }: { params: { slug: string } }) => {
 
           <div className="flex-1 max-w- mt-5 lg:mt-0">
             <div className="flex justify-between items-center">
-              <h2 className="text-xl font-semibold">{product.name}</h2>
+              <h2 className="text-xl font-semibold">{product?.name}</h2>
               <span className="text-black/80 text-lg">
-                {product.price.formatted_with_symbol}
+                {product?.price.formatted_with_symbol}
               </span>
             </div>
             <div
               className="py-5"
-              dangerouslySetInnerHTML={{ __html: product.description }}
+              dangerouslySetInnerHTML={{ __html: product?.description }}
             />
 
             <div>
