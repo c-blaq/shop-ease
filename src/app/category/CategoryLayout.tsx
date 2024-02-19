@@ -20,6 +20,7 @@ const CategoryLayout = async ({ categoryName, children }: ICategoryLayout) => {
             {categoryName}
           </h2>
           <div className="flex md:text-base flex-row md:flex-col">
+            {/* @ts-ignore */}
             {category?.children.map((subcategory) => (
               <Link
                 key={subcategory.id}
