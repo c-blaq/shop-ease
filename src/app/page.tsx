@@ -52,7 +52,9 @@ export default async function Home() {
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5">
             {products &&
-              products.data.map((product) => <ProductCard product={product} />)}
+              products.data.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
           </div>
         </section>
 

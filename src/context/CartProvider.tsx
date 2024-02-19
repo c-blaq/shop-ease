@@ -1,32 +1,43 @@
 "use client";
+import { commerce } from "@/lib/commerce";
 import React, { ReactNode, createContext, useContext, useState } from "react";
 
 type CartContextType = {
-  cartItemsCount: number;
-  setCartItemsCount: React.Dispatch<React.SetStateAction<number>>;
   cartItems: any;
-  handleAddItemToCart: () => void;
+  fetchCart: () => void;
+  handleAddItemToCart: (productId: string, quantity: number) => void;
 };
+
+interface IAddToCart {
+  productId: string;
+  quantity: number;
+}
 
 export const CartContext = createContext<CartContextType>(
   {} as CartContextType
 );
 
 const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [cartItemsCount, setCartItemsCount] = useState(0);
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState({});
+  // const [cartQuantity, setCartQuantity] = useState([]);
 
-  const handleAddItemToCart = () => {
-    // setCartItems([item, ...cartItems]);
-    setCartItemsCount((prev) => prev + 1);
+  // fetch cart items
+  const fetchCart = async () => {
+    setCartItems(await commerce.cart.retrieve());
+  };
+
+  fetchCart();
+
+  const handleAddItemToCart = async (productId: string, quantity: number) => {
+    const cartItem = await commerce.cart.add(productId, quantity);
+    setCartItems(cartItem);
   };
 
   return (
     <CartContext.Provider
       value={{
-        cartItemsCount: cartItemsCount,
-        setCartItemsCount,
         cartItems,
+        fetchCart,
         handleAddItemToCart,
       }}
     >

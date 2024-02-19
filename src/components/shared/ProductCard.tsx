@@ -45,7 +45,7 @@ const ProductCard = ({ product }: IProduct) => {
       <Button
         className="ml-auto  block text-sm w-fit mt-5 bg-black/80 text-white transition duration-300"
         type="text"
-        onClick={() => handleAddItemToCart()}
+        onClick={() => handleAddItemToCart(product.id, 1)}
       >
         Add to cart
       </Button>

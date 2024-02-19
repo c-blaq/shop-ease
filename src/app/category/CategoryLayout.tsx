@@ -22,6 +22,7 @@ const CategoryLayout = async ({ categoryName, children }: ICategoryLayout) => {
           <div className="flex md:text-base flex-row md:flex-col">
             {category?.children.map((subcategory) => (
               <Link
+                key={subcategory.id}
                 href={`/category/${categoryName}/${subcategory.slug}`}
                 className="cursor-pointer hover:bg-black/[0.06] transition duration-300 py-3 px-4 md:px-0 md:hover:px-3"
               >

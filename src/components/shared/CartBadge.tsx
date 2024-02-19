@@ -4,10 +4,10 @@ import { IoBagOutline } from "react-icons/io5";
 import { useCart } from "@/context/CartProvider";
 
 const CartBadge = () => {
-  const { cartItemsCount } = useCart();
+  const { cartItems } = useCart();
 
   return (
-    <Badge count={cartItemsCount} overflowCount={20}>
+    <Badge count={cartItems.total_items} overflowCount={20}>
       <IoBagOutline
         size={"24px"}
         className="hover:!text-gray-500  transition duration-300"
