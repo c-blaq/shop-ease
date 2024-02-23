@@ -11,8 +11,13 @@ import { FaChevronLeft, FaDeleteLeft, FaTrash } from "react-icons/fa6";
 import Loader from "@/components/shared/Loader";
 
 const Cart = () => {
-  const { cartItems, fetchCart, handleEmptyCart, handleRemoveFromCart } =
-    useCart();
+  const {
+    cartItems,
+    fetchCart,
+    handleEmptyCart,
+    handleRemoveFromCart,
+    handleUpdateCartQty,
+  } = useCart();
 
   useEffect(() => fetchCart, []);
 
@@ -66,10 +71,25 @@ const Cart = () => {
                       {item.price.formatted_with_symbol}
                     </td>
                     <td className="py-2 px-2 sm:px-0">
-                      <div className="flex flex-col sm:flex-row items-center justify-center gap-1">
-                        <Button type="text">-</Button>
+                      <div className="flex flex-col sm:flex-row items-center justify-center gap-1 disabled:cursor-not-allowed disabled:text-black/50">
+                        <Button
+                          type="text"
+                          onClick={() =>
+                            handleUpdateCartQty(item.id, item.quantity - 1)
+                          }
+                          disabled={item.quantity === 1}
+                        >
+                          -
+                        </Button>
                         <span>{item.quantity}</span>
-                        <Button type="text">+</Button>
+                        <Button
+                          type="text"
+                          onClick={() =>
+                            handleUpdateCartQty(item.id, item.quantity + 1)
+                          }
+                        >
+                          +
+                        </Button>
                       </div>
                     </td>
                     <td className="py-2 px-2 sm:px-0">

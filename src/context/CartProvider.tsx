@@ -8,6 +8,7 @@ type CartContextType = {
   handleEmptyCart: () => void;
   handleRemoveFromCart: (productId: string) => void;
   handleAddItemToCart: (productId: string, quantity: number) => void;
+  handleUpdateCartQty: (productId: string, quantity: number) => void;
 };
 
 interface IAddToCart {
@@ -46,6 +47,14 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     setCartItems(cartItem);
   };
 
+  // update item quantity
+  const handleUpdateCartQty = async (productId: string, quantity: number) => {
+    const cartItem = await commerce.cart.update(productId, {
+      quantity: quantity,
+    });
+    setCartItems(cartItem);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -54,6 +63,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
         handleAddItemToCart,
         handleEmptyCart,
         handleRemoveFromCart,
+        handleUpdateCartQty,
       }}
     >
       {children}
