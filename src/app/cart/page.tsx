@@ -11,7 +11,7 @@ import { FaChevronLeft, FaDeleteLeft, FaTrash } from "react-icons/fa6";
 import Loader from "@/components/shared/Loader";
 
 const Cart = () => {
-  const { cartItems, fetchCart } = useCart();
+  const { cartItems, fetchCart, handleEmptyCart } = useCart();
 
   useEffect(() => fetchCart, []);
 
@@ -28,13 +28,13 @@ const Cart = () => {
         </Link>
       </div>
 
-      {!cartItems.line_items?.length ? (
+      {Object.keys(cartItems).length === 0 ? (
         <div className="min-h-[200px] flex justify-center items-center">
           <Loader />
         </div>
       ) : (
         <div className="w-full mt-10">
-          <table className="w-full">
+          <table className="w-full min-h-36">
             <thead className="border-t-2 border-b-2">
               <tr>
                 <th className="py-2 px-2 sm:px-0">Product</th>
@@ -88,30 +88,35 @@ const Cart = () => {
                   </tr>
                 ))
               ) : (
-                <p>No item</p>
+                <tr>
+                  <td className="text-base">No item in cart!</td>
+                </tr>
               )}
             </tbody>
           </table>
 
-          <div className="mt-5  items-center justify-between">
-            <h2 className="text-xl">
-              Subtotal: {cartItems.subtotal?.formatted_with_symbol}
-            </h2>
-            <div className="flex mt-5 gap-5">
-              <Button
-                type="text"
-                className="border border-black rounded-sm flex-1"
-              >
-                Clear
-              </Button>
-              <Link
-                href="/checkout"
-                className="flex flex-1 justify-center items-center px-5 bg-black/95 rounded-sm hover:bg-black/[0.06] hover:text-black text-white"
-              >
-                Checkout
-              </Link>
+          {cartItems.line_items?.length !== 0 && (
+            <div className="mt-5  items-center justify-between">
+              <h2 className="text-xl">
+                Subtotal: {cartItems.subtotal?.formatted_with_symbol}
+              </h2>
+              <div className="flex mt-5 gap-5">
+                <Button
+                  type="text"
+                  className="border border-black rounded-sm flex-1"
+                  onClick={() => handleEmptyCart()}
+                >
+                  Clear
+                </Button>
+                <Link
+                  href="/checkout"
+                  className="flex flex-1 justify-center items-center px-5 bg-black/95 rounded-sm hover:bg-black/[0.06] hover:text-black text-white"
+                >
+                  Checkout
+                </Link>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       )}
     </div>

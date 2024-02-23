@@ -5,6 +5,7 @@ import React, { ReactNode, createContext, useContext, useState } from "react";
 type CartContextType = {
   cartItems: any;
   fetchCart: () => void;
+  handleEmptyCart: () => void;
   handleAddItemToCart: (productId: string, quantity: number) => void;
 };
 
@@ -26,8 +27,15 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     setCartItems(await commerce.cart.retrieve());
   };
 
+  // add to cart
   const handleAddItemToCart = async (productId: string, quantity: number) => {
     const cartItem = await commerce.cart.add(productId, quantity);
+    setCartItems(cartItem);
+  };
+
+  // empty cart
+  const handleEmptyCart = async () => {
+    const cartItem = await commerce.cart.empty();
     setCartItems(cartItem);
   };
 
@@ -37,6 +45,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
         cartItems,
         fetchCart,
         handleAddItemToCart,
+        handleEmptyCart,
       }}
     >
       {children}
