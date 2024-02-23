@@ -6,6 +6,7 @@ type CartContextType = {
   cartItems: any;
   fetchCart: () => void;
   handleEmptyCart: () => void;
+  handleRemoveFromCart: (productId: string) => void;
   handleAddItemToCart: (productId: string, quantity: number) => void;
 };
 
@@ -39,6 +40,12 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
     setCartItems(cartItem);
   };
 
+  // remove item from cart
+  const handleRemoveFromCart = async (productId: string) => {
+    const cartItem = await commerce.cart.remove(productId);
+    setCartItems(cartItem);
+  };
+
   return (
     <CartContext.Provider
       value={{
@@ -46,6 +53,7 @@ const CartProvider = ({ children }: { children: ReactNode }) => {
         fetchCart,
         handleAddItemToCart,
         handleEmptyCart,
+        handleRemoveFromCart,
       }}
     >
       {children}

@@ -11,7 +11,8 @@ import { FaChevronLeft, FaDeleteLeft, FaTrash } from "react-icons/fa6";
 import Loader from "@/components/shared/Loader";
 
 const Cart = () => {
-  const { cartItems, fetchCart, handleEmptyCart } = useCart();
+  const { cartItems, fetchCart, handleEmptyCart, handleRemoveFromCart } =
+    useCart();
 
   useEffect(() => fetchCart, []);
 
@@ -47,7 +48,7 @@ const Cart = () => {
             <tbody className="text-center">
               {cartItems.line_items?.length ? (
                 cartItems.line_items?.map((item: LineItem) => (
-                  <tr className="border-b-2">
+                  <tr key={item.id} className="border-b-2">
                     <td className="py-2 px-2 sm:px-0">
                       <div className="flex flex-col sm:flex-row justify-center items-center gap-2">
                         <Image
@@ -81,6 +82,7 @@ const Cart = () => {
                       <Button
                         type="text"
                         className="text-black/75 hover:!text-red-500"
+                        onClick={() => handleRemoveFromCart(item.id)}
                       >
                         <FaTrash />
                       </Button>
