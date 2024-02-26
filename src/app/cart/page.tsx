@@ -125,14 +125,14 @@ const Cart = () => {
               <div className="flex mt-5 gap-5">
                 <Button
                   type="text"
-                  className="border border-black rounded-sm flex-1"
+                  className="border border-black rounded-sm flex-1 transition-all duration-500"
                   onClick={() => handleEmptyCart()}
                 >
                   Clear
                 </Button>
                 <Link
                   href="/checkout"
-                  className="flex flex-1 justify-center items-center px-5 bg-black/95 rounded-sm hover:bg-black/[0.06] hover:text-black text-white"
+                  className="flex flex-1 justify-center items-center px-5 bg-black/95 rounded-sm hover:bg-black/[0.06] hover:text-black transition-all duration-500 text-white"
                 >
                   Checkout
                 </Link>

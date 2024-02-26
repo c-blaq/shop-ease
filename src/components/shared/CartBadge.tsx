@@ -1,10 +1,14 @@
-import React from "react";
+"use client";
+
+import React, { useEffect } from "react";
 import { Badge } from "antd";
 import { IoBagOutline } from "react-icons/io5";
 import { useCart } from "@/context/CartProvider";
 
 const CartBadge = () => {
-  const { cartItems } = useCart();
+  const { cartItems, fetchCart } = useCart();
+
+  useEffect(() => fetchCart, []);
 
   return (
     <Badge count={cartItems.total_items} overflowCount={20}>
